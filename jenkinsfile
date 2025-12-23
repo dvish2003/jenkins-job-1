@@ -1,0 +1,23 @@
+pipeline {
+    agent any 
+
+    stages {
+        stage ('clone project from github'){
+            step {
+                retry (3) {
+                    git branch: 'main', url: 'https://github.com/vishanchathuranga/jenkins-job-1.git'
+                }
+            }
+        }
+
+
+    stage ('build docker image') {
+        steps {
+            sh 'docker build -t jenkins-job-1:v${BUILD_NUMBER} .'
+        }
+    }
+
+    )
+
+    }
+}
