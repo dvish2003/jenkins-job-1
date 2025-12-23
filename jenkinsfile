@@ -20,10 +20,10 @@ pipeline {
 
         stage('Login to Docker Hub') {
             steps {
-                withCredentials([
-                    string(credentialsId: 'docker-hub-password', variable: 'DOCKER_HUB_PASSWORD')
-                ]) {
-                    sh "docker login -u dvish2003 -p ${DOCKER_HUB_PASSWORD}"
+                withCredentials([string(credentialsId: 'docker-hub-password', variable: 'vish-docker-hub-password')]) {
+                                        sh "docker login -u dvish2003 -p ${vish-docker-hub-password}"
+
+    // some block
                 }
             }
         }
